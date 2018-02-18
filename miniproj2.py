@@ -1,10 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-data   = np.loadtxt("data/data.txt").astype(int) # User Id, Movie Id, Rating
-movies = np.loadtxt("data/movies.txt", delimiter="\t",
+data   = np.genfromtxt("data/data.txt").astype(int) # User Id, Movie Id, Rating
+movies = np.genfromtxt("data/movies.txt", delimiter="\t",
                     usecols=[x for x in range(21) if x != 1]).astype(int)
-movie_names = np.loadtxt("data/movies.txt", delimiter="\t",
+movie_names = np.genfromtxt("data/movies.txt", delimiter="\t",
                     usecols = [1], dtype=str)
 params = ["Movie Id",
           "Unknown",
@@ -26,8 +26,8 @@ params = ["Movie Id",
           "Thriller",
           "War",
           "Western"]
-test   = np.loadtxt("data/test.txt")
-train  = np.loadtxt("data/train.txt")
+test   = np.genfromtxt("data/test.txt")
+train  = np.genfromtxt("data/train.txt")
 
 plt.hist(data[:, 2], bins='auto')
 plt.title("All Movie Ratings")
