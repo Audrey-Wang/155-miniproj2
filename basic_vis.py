@@ -11,9 +11,8 @@ def summarize(movie_titles, data):
         rating = np.mean(all_ratings)
         ratings.write("%d %f\n" % (len(all_ratings), rating))
     ratings.close()
-    print('done')
 
-def basic_visualizations(movie_ratings, data):
+def basic_visualizations(movie_ratings, movie_data, data, params):
     # 1. all ratings in the movielens dataset.
     plt.hist(data[:, 2], bins='auto')
     plt.title("All Movie Ratings")
