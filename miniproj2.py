@@ -58,3 +58,7 @@ reg = 0.01
 U1, V1, _ = train_model(m, n, k, eta, reg, train)
 test_err1 = get_err(U1, V1, test, reg)
 print(test_err1)
+a, _, _ = np.linalg.svd(V1)
+a = a[:2]
+V1_plot = np.dot(a, V1)
+print(V1_plot)
