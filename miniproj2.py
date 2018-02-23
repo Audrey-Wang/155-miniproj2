@@ -80,12 +80,11 @@ reg = 0.01
 # Generate V-tilde using all 3 methods. 
 # Method 1.
 U1, V1, _ = train_model(m, n, k, eta, reg, train)
-print(V1.shape)
 test_err1 = get_err(U1, V1, test, reg)
 a, _, _ = np.linalg.svd(V1)
 a = a[:2]
 V1_plot = np.dot(a, V1)
-print(V1_plot.shape)
+print('method 1 error: %f' % test_err1)
 
 # Method 2. 
 
