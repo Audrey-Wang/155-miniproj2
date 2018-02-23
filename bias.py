@@ -18,12 +18,11 @@ for trainset, testset in pkf.split(data):
     u = algo.pu
     v = algo.qi
     v = np.transpose(v)
-    print(u.shape)
-    print(v.shape)
     a, _, _ = np.linalg.svd(v)
     a = a[:2]
     vplot = np.dot(a, v)
-    print(vplot.shape)
+    predictions = algo.test(testset)
+    print('method 2 error: %f' % accuracy.rmse(predictions)
 
     movie_ratings = np.genfromtxt("data/summary.txt",  names=True)
     movie_titles = []
