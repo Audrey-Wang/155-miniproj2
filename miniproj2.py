@@ -19,7 +19,8 @@ with open("data/movies.txt", mode="r", encoding="ISO-8859-1") as f:
 movie_data = np.array(movie_data).astype(int)
 # summarize(movie_titles, data)
 movie_ratings = np.genfromtxt("data/summary.txt",  names=True)
-params = ["Action",
+params = ["Unknown",
+          "Action",
           "Adventure",
           "Animation",
           "Childrens",
