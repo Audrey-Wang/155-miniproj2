@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import scipy.sparse as sparse
 from scipy.sparse.linalg import svds
-from matrix_vis import *
+from matrix_vis_offshelf import *
 
 u_cols = ['movie_id', 'movie_title', 'unknown', 'action', 'adventure', 'animation', 'childrens', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'film-noir', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western']
 users = pd.read_csv('data/movies.txt', sep='\t', names = u_cols, encoding = 'latin-1')
@@ -46,7 +46,7 @@ visualization(np.array(chosen), users[:,1], vt, "Ten Movies of Choice", "5_2_a.p
 # (b) Ten most popular movies
 visualization(most_popular, users[:,1], vt, "Ten Most Popular Movies", "5_2_b.png")
 # (c) Ten best movies 
-#visualization(best_rated, users[:,1], vt, "Ten Best Movies", "5_2_c.png")
+visualization(best_rated, users[:,1], vt, "Ten Best Movies", "5_2_c.png")
 # (d) Ten movies from selected genres.
 
 movie_data = []
