@@ -60,6 +60,8 @@ for i in genres:
     movie_ids = []
     for j in range(len(movie_data)):
         if movie_data[j][i] == 1:
-        	movie_ids.append(j)
+            # print(users[:,1][j])
+            # print(movie_data[j])
+            movie_ids.append(j + 1)
     visualization(movie_ids[:10], users[:,1], vt, 
-        "Ten %s Movies" % u_cols[i], "5_2_d_%d.png" % i)
+        "Ten %s Movies" % u_cols[i + 2], "5_2_d_%d.png" % i)
