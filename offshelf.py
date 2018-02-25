@@ -20,7 +20,6 @@ print(ratings.shape)
 test   = np.genfromtxt("data/test.txt").astype(int)
 train  = np.genfromtxt("data/train.txt").astype(int)
 
-#test = np.reshape(test, (10000, -1)) 
 train = np.reshape(train, (90000, -1))
 train_data_matrix = np.zeros(shape=(943,1682))
 train_data = pd.DataFrame(train)
@@ -29,6 +28,14 @@ for line in train_data.itertuples():
 u, s, vt = svds(train_data_matrix, k = 20)
 s_diag_matrix = np.diag(s)
 X_pred = np.dot(np.dot(u, s_diag_matrix), vt)
+
+# rmse calculation
+test = np.reshape(test, (10000, -1))
+test_data_matrix = np.zeros(shape=(943,1682))
+test_data = pd.DataFrame(test)
+for line in test_data.itertuples():
+	test_data_matrix[line[1] - 1, line[2] - 1] = line[3]
+print(np.sqrt(np.mean((X_pred - test_data_matrix) ** 2))
 
 movie_ratings = np.genfromtxt("data/summary.txt",  names=True)
 users = np.array(users)
@@ -65,3 +72,4 @@ for i in genres:
             movie_ids.append(j + 1)
     visualization(movie_ids[:10], users[:,1], vt, 
         "Ten %s Movies" % u_cols[i + 2], "5_2_d_%d.png" % i)
+    
