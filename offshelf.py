@@ -3,6 +3,13 @@ import numpy as np
 import scipy.sparse as sparse
 from scipy.sparse.linalg import svds
 from matrix_vis_offshelf import *
+from sklearn.metrics import mean_squared_error
+from math import sqrt
+
+def rmse(prediction, ground_truth):
+    prediction = prediction[ground_truth.nonzero()].flatten()
+    ground_truth = ground_truth[ground_truth.nonzero()].flatten()
+    return sqrt(mean_squared_error(prediction, ground_truth))
 
 u_cols = ['movie_id', 'movie_title', 'unknown', 'action', 'adventure', 'animation', 'childrens', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'film-noir', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western']
 users = pd.read_csv('data/movies.txt', sep='\t', names = u_cols, encoding = 'latin-1')
@@ -41,7 +48,6 @@ best_rated = np.argpartition(
     movie_ratings['average_rating'], -10)[-10:].tolist()
 #best_rated = np.argpartition(ratings['average_rating'], -10)[-10:].tolist()
 genres = [1, 3, 5]
-# (a) Any ten movies
 visualization(np.array(chosen), users[:,1], vt, "Ten Movies of Choice", "5_2_a.png")
 # (b) Ten most popular movies
 visualization(most_popular, users[:,1], vt, "Ten Most Popular Movies", "5_2_b.png")
